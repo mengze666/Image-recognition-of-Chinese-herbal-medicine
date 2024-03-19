@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>图像识别-中药材识别</title>
+  </head>
+  <body>
+    {% extends "nav_footer.html" %}
+    {% block content %}
+    <section class="hero bd-hero bd-is-expo">
+        <div class="hero-body">
+        <div class="container">
+            <div class="bd-hero-body">
+                <div class="bd-hero-heading">
+                    <h1 class="title">
+                        <span class="icon">
+                          <i class="fas fa-images"></i>
+                        </span>
+                        <p>图像识别</p>
+                    </h1>
+                    <div class="subtitle is-4">
+                      <p>请上传您的<strong>图片</strong>进行识别!🤖</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+  </div>
+    </section>
+    <div class="columns is-desktop m-1">
+      <div class="column">
+          <article class="message is-success">
+          <div class="message-header">
+            <p>图片上传</p>
+          </div>
+          <div class="message-body">
+            <form id="upload-file" method="POST" enctype="multipart/form-data">
+                <div id="predict-file" class="file  is-boxed is-success is-centered">
+                  <label class="file-label">
+                    <input class="file-input" type="file" accept="image/png, image/jpeg, image/webp" name="file">
+                    <span class="file-cta">
+                      <span class="file-icon">
+                        <i class="fas fa-upload"></i>
+                      </span>
+                      <span class="file-label">
+                        upload file…
+                      </span>
+                    </span>
+                    <span class="file-name">
+                      未选择图片
+                    </span>
+                  </label>
+                </div>
+                <button id="predict-btn" style="width: 100%; margin-top: 15px;" class="button is-success "  disabled type="submit" value="Predict">识别</button>
+            </form>
+        </div>
+      </article>
+      </div>
+      <div class="column">
+          <article class="message is-success">
+          <div class="message-header">
+            <p>识别结果</p>
+          </div>
+          <div class="message-body">
+            <div class="control">
+                <div class="tags has-addons m-0">
+                  <span class="tag is-danger">Result</span>
+                  <span class="tag is-info">Top5</span>
+                </div>
+            {% if result %}
+              {% for key, value in result.items()%}
+                  <div class="tags has-addons m-0">
+                      <span class="tag is-info">Top{{ loop.index }}</span>
+                      <span class="tag is-success">
+                          <a href="/baike/detail/{{ key }}" class="">{{ key }}</a>
+                      </span>
+                      <span class="tag is-warning">{{ value }}%</span>
+                  </div>
+              {% endfor %}
+            {% else %}
+                <span class="tag is-danger">您还没有上传图片哟~</span>
+            {% endif %}
+            </div>
+          </div>
+      </article>
+      </div>
+     </div>
+    <script>
+    const fileInput = document.querySelector('#predict-file input[type=file]');
+    fileInput.onchange = () => {
+        if (fileInput.files.length > 0) {
+          const fileName = document.querySelector('#predict-file .file-name');
+          fileName.textContent = fileInput.files[0].name;
+          document.querySelector("#predict-btn").removeAttribute("disabled");
+        }
+    }
+    </script>
+    {% endblock %}
+  </body>
+</html>

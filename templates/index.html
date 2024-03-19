@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>首页-中药材识别</title>
+  </head>
+  <body>
+    {% extends "nav_footer.html" %}
+    {% block content %}
+    <section class="hero bd-hero bd-is-primary">
+      <div class="hero-body">
+          <div class="container">
+            <div class="bd-hero-body">
+              <div class="bd-hero-heading">
+                <h1 class="title">
+                    <span class="icon has-text-primary">
+                      <i class="fas fa-home"></i>
+                    </span>
+                    <p style="color: var(--color-strong)">主页</p>
+                </h1>
+                <div class="subtitle is-4 algolia-lvl1">
+                  <p>欢迎来到<strong>中药材识别</strong>网页!🤗</p>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+    </section>
+    <div class="container">
+        <div class="box mt-3">
+            <article class="message is-primary">
+              <div class="message-body">
+                  中华文化博大精深，作为当代新时代青年，更应该将之传承并发扬下去，中药材是中华文化的一大亮点，更应受到人们的重视。中药材类别繁杂，肉眼不好区分，而人工智能技术已经较为成熟。显然，人工智能已成为替代人工挑选的一大工具，这自然让人想到通过人工智能技术对中药材进行识别、分类。
+                  <br>
+                 本项目通过<strong>ResNet-50残差网络</strong>进行图片分类模型训练，深度学习框架来自百度飞桨的PaddleX，数据集包括163种常见中药材，训练集共256,767张图片，测试集共10,000张图片，通过20轮次的训练，该模型的
+                  <strong>Top1</strong>准确率可达到98.9%，<strong>Top5</strong>准确率可达到100%。
+              </div>
+            </article>
+            <figure class="image is-16by9">
+                <img class="is-centered"
+                     src="../static/images/baike.jpg" alt="">
+            </figure>
+        </div>
+
+    </div>    
+    {% endblock %}
+  </body>
+</html>

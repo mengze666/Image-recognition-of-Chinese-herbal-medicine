@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bulma.min.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/all.min.css') }}" >
+</head>
+<body>
+    <nav class="navbar bd-navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="/">
+              <img src="{{ url_for('static', filename='images/logo.png') }}" width="112px" height="28px" alt="logo">
+            </a>
+            <a class="navbar-item bd-mobile-icon" href="https://github.com/mengze666" target="_blank">
+                <span class="icon">
+                  <i class="fab fa-lg fa-github-alt"></i>
+                </span>
+            </a>
+
+            <a class="navbar-item bd-mobile-icon" href="https://blog.csdn.net/weixin_52788492?spm=1010.2135.3001.5421" target="_blank">
+                <span class="icon has-text-rss">
+                  <i class="fas fa-rss"></i>
+                </span>
+            </a>
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="myNavbar">
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+            </a>
+        </div>
+        <div id="myNavbar" class="navbar-menu">
+          <div class="navbar-start bd-navbar-start bd-is-original">
+              <a class="navbar-item bd-navbar-item bd-navbar-item-home"
+                href="/">
+                <span class="icon  has-text-primary">
+                    <i class="fas fa-home"></i>
+                </span>
+                <span>主页</span>
+              </a>
+
+              <a class="navbar-item bd-navbar-item bd-navbar-item-images"
+                href="/predict">
+                <span class="icon has-text-images">
+                    <i class="far fa-images"></i>
+                </span>
+                <span>图像识别</span>
+              </a>
+
+              <a class="navbar-item bd-navbar-item bd-navbar-item-love"
+                href="/baike">
+                <span class="icon has-text-love">
+                    <i class="fas fa-book-medical"></i>
+                </span>
+                <span>百科</span>
+              </a>
+{#              <div class="navbar-item bd-navbar-item bd-navbar-item-base has-dropdown is-hoverable">#}
+{#                <a class="navbar-link bd-navbar-ellipsis" href="#">#}
+{#                  <span class="icon">#}
+{#                    <i class="fas fa-ellipsis-h"></i>#}
+{#                  </span>#}
+{#                </a>#}
+{#                <div class="navbar-dropdown bd-navbar-dropdown is-boxed">#}
+{#                    <a class="navbar-item" data-route="index" href="#">#}
+{#                        <div>#}
+{#                          <div class="icon-text">#}
+{#                            <span class="icon has-text-success">#}
+{#                              <i class="fas fa-rocket"></i>#}
+{#                            </span>#}
+{#                            <span>#}
+{#                              <strong>Bulma start</strong>#}
+{#                            </span>#}
+{#                          </div>#}
+{#                          A tiny npm package to get started#}
+{#                        </div>#}
+{#                    </a>#}
+{#                    <hr class="navbar-divider ">#}
+{#                    <a class="navbar-item" data-route="index" href="#">#}
+{#                        <div>#}
+{#                          <div class="icon-text">#}
+{#                            <span class="icon has-text-warning">#}
+{#                              <i class="fas fa-certificate"></i>#}
+{#                            </span>#}
+{#                            <span>#}
+{#                              <strong>Made with Bulma</strong>#}
+{#                            </span>#}
+{#                          </div>#}
+{#                          The official community badge#}
+{#                        </div>#}
+{#                    </a>#}
+{#                </div>#}
+{#              </div>#}
+          </div>
+          <div class="navbar-end">
+              <a class="bd-navbar-icon navbar-item" href="https://github.com/mengze666" target="_blank">
+                <span class="icon">
+                  <i class="fab fa-lg fa-github-alt"></i>
+                </span>
+              </a>
+
+              <a class="bd-navbar-icon navbar-item" href="https://blog.csdn.net/weixin_52788492?spm=1010.2135.3001.5421" target="_blank">
+                <span class="icon has-text-rss">
+                  <i class="fas fa-rss"></i>
+                </span>
+              </a>
+          </div>
+        </div>
+    </nav>
+
+    <div>
+        {% block content %}
+        <!-- 主要内容 -->
+        {% endblock %}
+    </div>
+
+    <footer class="footer">
+        <div class="content has-text-centered">
+            <p>
+                <a href=""><strong>Image-recognition-of-Chinese-herbal-medicine</strong></a> by
+                <a href="https://github.com/mengze666" target="_blank">
+                    <strong>MengzeOvO</strong>
+                </a>.
+            </p>
+            <p>
+                Welcome to star!😃
+            </p>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/jquery-1.8.3.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

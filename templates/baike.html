@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>百科-中药材识别</title>
+  </head>
+  <body>
+    {% extends "nav_footer.html" %}
+    {% block content %}
+    <!-- 一面气势磅礴的英雄旗帜来展示一些东西 -->
+    <section class="hero bd-hero bd-is-love">
+        <div class="hero-body">
+            <div class="container">
+                <div class="bd-hero-body">
+                    <div class="bd-hero-heading">
+                        <h1 class="title">
+                            <span class="icon"><i class="fas fa-book-medical"></i></span>
+                            <p>百科</p>
+                        </h1>
+                        <div class="subtitle is-4">
+                            <p>看看有没有你要的<strong>中药材</strong>!🤭</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- 主要内容 -->
+    <div class="container mt-3">
+        <article class="panel is-danger">
+          <p class="panel-heading">
+            药材筛查
+          </p>
+          <p class="panel-tabs">
+            <a id='all' class="is-active" href="/baike">所有</a>
+            <a id='cool' href="/baike/0">凉</a>
+            <a id='warm' href="/baike/1">温</a>
+            <a id='cold' href="/baike/2">寒</a>
+            <a id='even' href="/baike/3">平</a>
+          </p>
+          <div class="panel-block">
+              <form class="p-0" action="{{ request.path }}" method="post"  style="width: 100%;">
+                  <div class="field has-addons" style="width: 100%; justify-content: center">
+
+                      <div class="control" style="width: 50% ;">
+                        <input class="input is-info"
+                               id="find"
+                               type="text"
+                               name="find"
+                               placeholder="">
+                      </div>
+                      <div class="control">
+                        <button type="submit" class="button is-info">
+                          <span class="icon is-left">
+                            <i class="fas fa-search" aria-hidden="true"></i>
+                          </span>
+                        </button>
+                      </div>
+
+                  </div>
+                  <div style="display: flex;justify-content: center">
+                     <span>e.g.
+                         <a id="eg" style="color: rgb(37, 95, 163);">
+                         {%  if list %}
+                             {{ list[0].chinese}}
+                         {%else %}
+                             {{ '艾叶' }}
+                         {% endif %}
+                         </a>
+                     </span>
+                  </div>
+              </form>
+
+          </div>
+
+          <div class="box">
+          {{ pagination.info }}
+              <div class="bd-screenshots">
+                    {% for item in list %}
+                    <div class="bd-screenshot">
+                        <figure class="image is-1by1">
+                            <a href="/baike/detail/{{ item.chinese }}"
+                               target="_blank">
+                                <img src="../static/images/cls/{{ item.pinyin }}.jpg" alt="Placeholder image">
+                            </a>
+                        </figure>
+                        <span class="tag is-link is-normal" style="width: 100%">{{ item.chinese}}</span>
+                    </div>
+                    {% endfor %}
+
+                </div>
+            {{ pagination.links }}
+          </div>
+        </article>
+    </div>
+        <script>
+        // 获取当前页面的路径
+        var path = window.location.pathname;
+        // 获取所有的<a>元素
+        var tabs = document.querySelectorAll('.panel-tabs a');
+        // 遍历所有的<a>元素
+        tabs.forEach(function(tab) {
+            // 检查当前<a>元素的href属性是否与当前页面路径匹配
+            if (tab.getAttribute('href') === path) {
+                // 如果匹配，则添加is-active类
+                tab.classList.add('is-active');
+            } else {
+                // 如果不匹配，则移除is-active类
+                tab.classList.remove('is-active');
+            }
+        });
+
+        document.getElementById('eg').addEventListener('click', function() {
+            let ingredientText = this.innerText;
+            document.getElementById('find').value = ingredientText;
+        });
+        </script>
+    {% endblock %}
+  </body>
+</html>

@@ -1,0 +1,11 @@
+alembic==1.13.1
+Flask==3.0.2
+Flask_Caching==2.1.0
+Flask_Migrate==4.0.5
+flask_paginate==2023.10.24
+flask_sqlalchemy==3.1.1
+numpy==1.25.2
+opencv_python==4.8.1.78
+paddlepaddle_gpu==2.5.1.post112
+SQLAlchemy==2.0.25
+Werkzeug==3.0.1

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>详情-中药材识别</title>
+  </head>
+  <body>
+    {% extends "nav_footer.html" %}
+    {% block content %}
+        <div class="box container">
+            <p>基本信息</p>
+            <hr>
+            <div class="table-container">
+              <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+                {% for k, v in medicine.items() %}
+                    <tr>
+                        <td>
+                            <span class="tag is-primary is-light">{{ k }}</span>
+                        </td>
+                        <td>
+                            {{ v }}
+                        </td>
+                    </tr>
+                {% endfor %}
+              </table>
+            </div>
+
+{#            <p>产地分布</p>#}
+{#            <hr>#}
+        </div>
+    {% endblock %}
+  </body>
+</html>

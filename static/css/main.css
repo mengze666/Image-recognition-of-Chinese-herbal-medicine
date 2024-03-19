@@ -1,0 +1,278 @@
+/* 全局控制 */
+
+
+
+/* 全局颜色控制 */
+:root {
+    --primary: #00d1b2;
+    --primary-light: #d9f8f3;
+    --primary-dark: #00947e;
+    --love-light: #feecf0;
+    --love-dark: #cc0f35;
+    --love: #f14668;
+    --images-light: #fffaeb;
+    --images-dark: #946400;
+    --images: #ffd257;
+    --rss: #f26522;
+}
+
+/* 百科颜色控制 */
+.bd-hero.bd-is-love {
+    --background-color: var(--love-light);
+    --color-strong: var(--love);
+    --color-icon: var(--love);
+}
+
+/* 图像识别颜色控制 */
+.bd-hero.bd-is-expo {
+    --background-color: var(--images-light);
+    --color-strong: var(--images-dark);
+    --color-icon: var(--images);
+}
+
+.bd-hero-heading .title {
+    color: var(--color-strong);
+    display: flex;
+    font-weight: 400;
+    position: relative;
+}
+
+.bd-hero {
+    --color: #7a7a7a;
+    --color-strong: #363636;
+    --icon-dimensions: 1.125em;
+    --icon-spacing: 0.25em;
+    background-color: var(--background-color);
+}
+
+
+.bd-hero.bd-is-primary {
+    --background-color: var(--primary-light);
+    --color-strong: var(--primary-dark);
+    --color-icon: var(--primary);
+}
+
+/* 菜单栏亮暗颜色预设*/
+.bd-navbar-item.bd-navbar-item-home {
+    --color-light: var(--primary-light);
+    --color-dark: var(--primary-dark);
+}
+
+.bd-navbar-item.bd-navbar-item-images {
+    --color-light: var(--images-light);
+    --color-dark: var(--images-dark);
+}
+.bd-navbar-item.bd-navbar-item-love {
+    --color-light: var(--love-light);
+    --color-dark: var(--love-dark);
+}
+
+/* 图标颜色控制 */
+.has-text-primary {
+    color: var(--primary)!important;
+}
+.has-text-images {
+    color: var(--images)!important;
+}
+.has-text-love {
+    color: var(--love)!important;
+}
+.has-text-rss {
+    color: var(--rss)!important;
+}
+
+/* 菜单栏选中、悬浮颜色变换 */
+.bd-navbar-item.is-active, .bd-navbar-item:hover {
+    border-radius: .375em;
+    color: var(--color-dark)!important;
+}
+
+.bd-navbar-item:hover:not(.is-active) {
+    background-color: var(--color-light)!important;
+}
+.bd-navbar-item.is-active:hover {
+    background-color: transparent!important;
+}
+.bd-navbar-item.is-active {
+    --background-color: transparent!important;
+    box-shadow: inset 0 0 0 2px var(--color-light)!important;
+}
+.bd-navbar-item {
+    transition-duration: 86ms;
+    transition-property: var(--background-color), box-shadow, color;
+}
+
+
+/* 控制icon与菜单名之间的距离 */
+.bd-navbar-item>.icon {
+    margin-left: -.25em;
+    margin-right: .25em;
+}
+
+/* 菜单栏下拉列表图标样式 */
+.bd-navbar-ellipsis {
+    align-items: center;
+    border-radius: .375em;
+    color: #485fc7;
+    justify-content: center;
+    padding: 0!important;
+    width: 2.25em;
+    display: flex;
+}
+.navbar-link::after {
+    display: none!important;
+}
+
+/* 屏幕宽度不小于1024px*/
+@media screen and (min-width: 1024px) {
+    .bd-mobile-icon {
+        display: none!important;
+    }
+    .bd-navbar {
+        padding: 1rem 2rem;
+    }
+    .bd-hero-heading .title .icon {
+        margin-left: calc(-1 * (var(--icon-dimensions) + var(--icon-spacing)));
+        margin-right: var(--icon-spacing);
+    }
+    .bd-hero {
+        --icon-spacing: 0.5em;
+    }
+}
+/* 屏幕宽度不大于1023px*/
+@media screen and (max-width: 1023px) {
+    .navbar-end {
+        display: none;
+    }
+    .bd-navbar-ellipsis {
+        display: none!important;
+    }
+    .navbar-dropdown .navbar-item {
+        padding: .5em .75em !important;
+    }
+    .bd-mobile-icon {
+        display: flex;
+        align-items: center;
+    }
+    .navbar-start, .navbar-end {
+      flex-direction: column;
+    }
+
+    .navbar-item {
+      margin-right: 0;
+      margin-bottom: 0.5rem;
+    }
+
+    .bd-screenshots {
+        grid-template-columns: repeat(auto-fill, minmax(calc(33.3% - 1.5rem), 1fr))!important;
+        margin: 0 auto;
+        max-width: 1023px;
+    }
+
+     .bd-hero-heading .title .icon {
+        margin-right: var(--icon-spacing);
+    }
+    .bd-hero {
+        --icon-spacing: 0.5em;
+    }
+
+}
+
+
+
+
+@media screen and (min-width: 1024px), print {
+    .bd-screenshots {
+        grid-template-columns: repeat(auto-fill, minmax(calc(12.5% - 1.5rem), 1fr))!important;
+        margin: 0 auto;
+        max-width: 1024px;
+    }
+}
+.bd-screenshots {
+    display: grid;
+    grid-gap: 1.5rem;
+    grid-template-columns: 1fr;
+}
+
+
+.bd-screenshot {
+    align-self: flex-start;
+    display: block;
+    transition-duration: 172ms;
+    transition-property: box-shadow,transform;
+}
+
+.bd-screenshot, .bd-screenshot img {
+    border-radius: 6px;
+}
+
+.bd-screenshot img:hover {
+    scale: 0.95;
+}
+
+.bd-screenshots .bd-screenshot {
+    position: relative;
+}
+
+
+.wrap {
+  display: inline-flex;
+  position: relative;
+  margin: 50px auto;
+}
+
+[type=range] {
+  margin: 0;
+  -webkit-appearance: none;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: none;
+  overflow: hidden;
+}
+
+::-webkit-slider-runnable-track {
+  background-color: transparent;
+  height: 100%;
+  cursor: ew-resize;
+}
+
+::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 4px;
+  height: 100%;
+  background-color: #18a0fb;
+}
+
+.wrap img {
+  display: block;
+  width: 300px;
+}
+
+.wrap img:first-of-type {
+  position: absolute;
+  clip-path: inset(0 calc(100% - var(--pos, .5) * 100%) 0 0)
+}
+
+.pagination-page-info {
+    padding: .6em;
+    padding-left: 0;
+    width: 40em;
+    margin: .5em;
+    margin-left: 0;
+    font-size: 16px;
+}
+.pagination-page-info b {
+    color: black;
+    background: #6aa6ed;
+    padding-left: 2px;
+    padding: .1em .25em;
+    font-size: 150%;
+}
+
+.pagination {
+    margin-left: 0;
+    margin: .5em;
+    padding: 1em;
+    padding-left: 0;
+}
