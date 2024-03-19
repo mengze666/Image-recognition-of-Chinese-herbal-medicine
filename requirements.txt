@@ -8,4 +8,3 @@ numpy==1.25.2
 opencv_python==4.8.1.78
 paddlepaddle_gpu==2.5.1.post112
 SQLAlchemy==2.0.25
-Werkzeug==3.0.1
