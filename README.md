@@ -1,5 +1,5 @@
 ## 中药材识别系统
-
+![image](https://github.com/mengze666/Image-recognition-of-Chinese-herbal-medicine/blob/master/static/images/baike.jpg)
 ---
 
 - 1.初始化数据库  ```flask db init```
