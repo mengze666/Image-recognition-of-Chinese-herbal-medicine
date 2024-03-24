@@ -15,7 +15,7 @@
                 <div class="bd-hero-heading">
                     <h1 class="title">
                         <span class="icon">
-                          <i class="fas fa-images"></i>
+                          <i class="fa-regular fa-image"></i>
                         </span>
                         <p>图像识别</p>
                     </h1>
@@ -35,7 +35,7 @@
           </div>
           <div class="message-body">
             <form id="upload-file" method="POST" enctype="multipart/form-data">
-                <div id="predict-file" class="file  is-boxed is-success is-centered">
+                <div id="predict-file" class="file is-boxed is-success is-centered">
                   <label class="file-label">
                     <input class="file-input" type="file" accept="image/png, image/jpeg, image/webp" name="file">
                     <span class="file-cta">
@@ -43,7 +43,7 @@
                         <i class="fas fa-upload"></i>
                       </span>
                       <span class="file-label">
-                        upload file…
+                        upload image file…
                       </span>
                     </span>
                     <span class="file-name">
@@ -64,17 +64,20 @@
           <div class="message-body">
             <div class="control">
                 <div class="tags has-addons m-0">
-                  <span class="tag is-danger">Result</span>
-                  <span class="tag is-info">Top5</span>
+                    <span class="tag is-success"><i class="fa-regular fa-flag-checkered"></i></span>
+                    <span class="tag is-warning">Class<i class="fa-solid fa-leaf has-text-primary"></i></span>
+                    <span class="tag is-primary">Similarity Rate <i class="fa-solid fa-rocket  has-text-danger"></i></span>
                 </div>
             {% if result %}
               {% for key, value in result.items()%}
                   <div class="tags has-addons m-0">
-                      <span class="tag is-info">Top{{ loop.index }}</span>
-                      <span class="tag is-success">
-                          <a href="/baike/detail/{{ key }}" class="">{{ key }}</a>
+                      <span class="tag is-success"><i class="fa-solid fa-{{ loop.index }}"></i></span>
+                      <span class="tag is-warning">
+                          <a href="/baike/detail/{{ key }}" class="has-text-link">{{ key }}</a>
                       </span>
-                      <span class="tag is-warning">{{ value }}%</span>
+                      <span class="tag is-primary">{{ value }}%<i class="fa-solid fa-fire has-text-danger"></i></span>
+
+
                   </div>
               {% endfor %}
             {% else %}

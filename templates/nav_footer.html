@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <!-- our project just needs Font Awesome Solid + Brands -->
+<!-- CSS引入 -->
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/fontawesome.min.css') }}"/>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/brands.min.css') }}"/>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/solid.min.css') }}"/>
@@ -11,6 +11,7 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}"/>
 </head>
 <body>
+<!-- 页眉 -->
     <nav class="navbar bd-navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
             <a class="navbar-item" href="/">
@@ -46,7 +47,7 @@
               <a class="navbar-item bd-navbar-item bd-navbar-item-images"
                 href="/predict">
                 <span class="icon has-text-images">
-                    <i class="far fa-images"></i>
+                    <i class="fa-regular fa-image"></i>
                 </span>
                 <span>图像识别</span>
               </a>
@@ -54,7 +55,7 @@
               <a class="navbar-item bd-navbar-item bd-navbar-item-love"
                 href="/baike">
                 <span class="icon has-text-love">
-                    <i class="fas fa-book-medical"></i>
+                    <i class="fa-solid fa-book"></i>
                 </span>
                 <span>百科</span>
               </a>
@@ -111,12 +112,13 @@
         </div>
     </nav>
 
+<!-- 内容 -->
     <div>
         {% block content %}
-        <!-- 主要内容 -->
         {% endblock %}
     </div>
 
+<!-- 页脚 -->
     <footer class="footer">
         <div class="content has-text-centered">
             <p>
@@ -126,11 +128,12 @@
                 </a>.
             </p>
             <p>
-                Welcome to star!😃
+                Welcome to star this project!😃
             </p>
         </div>
     </footer>
 
+<!-- JS引入 -->
     <script src="{{ url_for('static', filename='js/jquery-1.8.3.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 </body>
