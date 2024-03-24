@@ -1,5 +1,5 @@
 # -*- coding:utf-8 -*-
-# error.py
+# error.py 错误处理蓝图
 import json
 from flask import Blueprint, Response
 
