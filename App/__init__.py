@@ -1,8 +1,9 @@
+# -*- coding:utf-8 -*-
 # __init__.py  : 初始化文件，创建Flask应用
 from flask import Flask
 from .views import blue
-from .exts import init_exts
-from .error import exception
+from .extends import init_extends
+from .error import error
 
 
 def create_app(config):
@@ -19,10 +20,10 @@ def create_app(config):
     app.config.from_object(config)
 
     # 初始化插件
-    init_exts(app=app)
+    init_extends(app=app)
 
     # 注册蓝图
     app.register_blueprint(blueprint=blue)  # 注册业务蓝图
-    app.register_blueprint(blueprint=exception)  # 注册异常处理蓝图
+    app.register_blueprint(blueprint=error)  # 注册异常处理蓝图
 
     return app

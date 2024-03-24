@@ -1,6 +1,6 @@
 # models.py ：模型，数据库
 
-from .exts import db, cache
+from .extends import db, cache
 
 
 class Medicine(db.Model):

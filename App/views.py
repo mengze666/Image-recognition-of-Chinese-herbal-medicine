@@ -29,8 +29,9 @@ def upload():
         f0.save(file_path)
         res = predict(file_path)
         return render_template('./predict.html', result=res)
-    else:
+    elif request.method == 'GET':
         return render_template('./predict.html', result={})
+    return render_template('./error.html')
 
 
 @blue.route('/baike', methods=['GET', 'POST'])

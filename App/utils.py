@@ -9,8 +9,6 @@ import cv2
 import cfg
 
 
-os.environ['GLOG_v'] = '3'  # 设置日志级别为WARNING
-
 LABEL = os.path.join(cfg.BaseConfig.STATIC_FOLDER, 'json/label.json')
 PDMODEL = os.path.join(cfg.BaseConfig.STATIC_FOLDER, 'models/inference.pdmodel')
 PDIPARAMS = os.path.join(cfg.BaseConfig.STATIC_FOLDER, 'models/inference.pdiparams')
@@ -89,22 +87,25 @@ def run(predictor, img):
 
 
 def init_predictor():
-    """初始化预测器"""
-
-    config = Config(
-        PDMODEL,
-        PDIPARAMS
-    )
+    """初始化预测器
+    详见https://www.paddlepaddle.org.cn/inference/v2.6/api_reference/python_api_doc/Config_index.html
+    """
+    config = Config()
+    config.set_model(PDMODEL, PDIPARAMS)
     config.enable_memory_optim()
     config.set_cpu_math_library_num_threads(4)
     config.enable_mkldnn()
+    config.enable_profile()
+    config.summary()
+    config.disable_glog_info()
+    print("GLOG INFO is: {}".format(config.glog_info_disabled()))
     predictor = create_predictor(config)
     return predictor
 
 
 def predict(img_path):
     """预测图片类别主函数"""
-
+    global pred
     img = cv2.imread(img_path)
     img = preprocess(img)
     result = run(pred, [img])
@@ -126,5 +127,8 @@ def predict(img_path):
 # 加载label.json
 with open(LABEL, 'r', encoding='utf-8') as f:
     data = json.load(f)
-# 初始化预测器
-pred = init_predictor()
+
+if "pred" not in globals():
+    # 初始化预测器
+    global pred
+    pred = init_predictor()
