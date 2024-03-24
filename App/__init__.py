@@ -6,9 +6,10 @@ from .extends import init_extends
 from .error import error
 
 
-def create_app(config):
+def create_app(config=None):
     """flask的工厂函数"""
-
+    if not config:
+        raise Exception("请传入项目配置对象~")
     # 初始化app
     app = Flask(
         __name__,

@@ -1,3 +1,5 @@
+# -*- coding:utf-8 -*-
+# app.py 项目入口文件
 from App import create_app
 import cfg
 

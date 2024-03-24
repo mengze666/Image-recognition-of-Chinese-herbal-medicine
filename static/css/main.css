@@ -188,6 +188,7 @@
         max-width: 1024px;
     }
 }
+
 .bd-screenshots {
     display: grid;
     grid-gap: 1.5rem;
@@ -255,24 +256,19 @@
 }
 
 .pagination-page-info {
-    padding: .6em;
-    padding-left: 0;
+    padding: .6em .6em .6em 0;
     width: 40em;
-    margin: .5em;
-    margin-left: 0;
+    margin: .5em .5em .5em 0;
     font-size: 16px;
 }
 .pagination-page-info b {
     color: black;
     background: #6aa6ed;
-    padding-left: 2px;
     padding: .1em .25em;
     font-size: 150%;
 }
 
 .pagination {
-    margin-left: 0;
     margin: .5em;
-    padding: 1em;
-    padding-left: 0;
+    padding: 1em 1em 1em 0;
 }

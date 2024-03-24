@@ -1,3 +1,4 @@
+# -*- coding:utf-8 -*-
 # utils.py ：工具箱
 from paddle.inference import Config
 from paddle.inference import create_predictor
@@ -95,10 +96,10 @@ def init_predictor():
     config.enable_memory_optim()
     config.set_cpu_math_library_num_threads(4)
     config.enable_mkldnn()
-    config.enable_profile()
-    config.summary()
+    # config.enable_profile()
+    # config.summary()
     config.disable_glog_info()
-    print("GLOG INFO is: {}".format(config.glog_info_disabled()))
+    # print("GLOG INFO is: {}".format(config.glog_info_disabled()))
     predictor = create_predictor(config)
     return predictor
 
@@ -109,7 +110,7 @@ def predict(img_path):
     img = cv2.imread(img_path)
     img = preprocess(img)
     result = run(pred, [img])
-    max_labels = np.argsort(result[0][0])[::-1][0:5]
+    max_labels = np.argsort(result[0][0])[::-1][:5]
     res = {}
     for lab in max_labels:
         key = data[str(lab)]['name']

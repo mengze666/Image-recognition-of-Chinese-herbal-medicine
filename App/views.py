@@ -1,5 +1,6 @@
+# -*- coding:utf-8 -*-
 # views.py ：视图
-from flask import request, Blueprint, render_template, url_for
+from flask import request, Blueprint, render_template
 from flask_paginate import Pagination, get_page_parameter
 from sqlalchemy import and_
 from .utils import predict
