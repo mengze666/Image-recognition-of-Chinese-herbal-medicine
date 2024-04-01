@@ -24,11 +24,9 @@ def index():
 @blue.route('/predict', methods=["POST", "GET"])
 def upload():
     if request.method == 'POST':
-        f0 = request.files['file']
-        file_path = os.path.join(cfg.BaseConfig.UPLOADS_FOLDER + '/predict',
-                                 '{}.{}'.format(uuid.uuid4(), f0.filename.split('.')[-1]))
-        f0.save(file_path)
-        res = predict(file_path)
+        # image_file 数据类型是 Werkzeug 的 FileStorage 类型
+        image_file = request.files['file']
+        res = predict(image_file)
         return render_template('./predict.html', result=res)
     elif request.method == 'GET':
         return render_template('./predict.html', result={})
