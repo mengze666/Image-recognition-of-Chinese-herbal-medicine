@@ -67,8 +67,22 @@ def preprocess(img):
     return img[np.newaxis, :]
 
 
+def init_predictor():
+    """初始化预测器
+    详见https://www.paddlepaddle.org.cn/inference/v2.6/api_reference/python_api_doc/Config_index.html
+    """
+    config = Config()
+    config.set_model(PDMODEL, PDIPARAMS)
+    # 禁止在控制台打印log信息
+    config.disable_glog_info()
+    # 设置CPU加速库线程数为10
+    config.set_cpu_math_library_num_threads(10)
+    predictor = create_predictor(config)
+    return predictor
+
+
 def run(predictor, img):
-    """启动预测器"""
+    """预测图片主逻辑"""
     # copy img data to input tensor
     input_names = predictor.get_input_names()
     for i, name in enumerate(input_names):
@@ -87,29 +101,20 @@ def run(predictor, img):
     return results
 
 
-def init_predictor():
-    """初始化预测器
-    详见https://www.paddlepaddle.org.cn/inference/v2.6/api_reference/python_api_doc/Config_index.html
-    """
-    config = Config()
-    config.set_model(PDMODEL, PDIPARAMS)
-    config.enable_memory_optim()
-    config.set_cpu_math_library_num_threads(4)
-    config.enable_mkldnn()
-    # config.enable_profile()
-    # config.summary()
-    config.disable_glog_info()
-    # print("GLOG INFO is: {}".format(config.glog_info_disabled()))
-    predictor = create_predictor(config)
-    return predictor
-
-
-def predict(img_path):
-    """预测图片类别主函数"""
-    global pred
-    img = cv2.imread(img_path)
+def predict(image_file):
+    """对外接口：预测图片类别"""
+    # 获取预测器
+    pred = get_pred()
+    # 获取标签数据
+    data = get_label_data()
+    # np.fromstring 函数来将文件内容转换为 NumPy 数组，以便 OpenCV 能够读取图像。
+    img = cv2.imdecode(np.fromstring(image_file.read(), np.uint8), cv2.IMREAD_COLOR)
+    # 图片预处理
     img = preprocess(img)
+    # 执行图片预测
     result = run(pred, [img])
+    # 以下是对result的格式化，对前端返回的数据
+    # 这里不易读，直接写一起了，只需关注最后的[:5]，相当于TOP5
     max_labels = np.argsort(result[0][0])[::-1][:5]
     res = {}
     for lab in max_labels:
@@ -121,15 +126,27 @@ def predict(img_path):
     return res
 
 
-'''
-本段代码主要是为了避免每次预测都执行无用的部分，因此设置为全局变量。
-'''
+'''单例模式：避免多次加载文件，直接读取内存变量'''
+if "g_LabelJson" not in globals():
+    global g_LabelJson
+    # 加载label.json
+    with open(LABEL, 'r', encoding='utf-8') as f:
+        print("标签文件加载成功~")
+        g_LabelJson = json.load(f)
 
-# 加载label.json
-with open(LABEL, 'r', encoding='utf-8') as f:
-    data = json.load(f)
 
-if "pred" not in globals():
+if "g_Predictor" not in globals():
     # 初始化预测器
-    global pred
-    pred = init_predictor()
+    global g_Predictor
+    g_Predictor = init_predictor()
+    print("预测器准备就绪~")
+
+
+def get_label_data():
+    global g_LabelJson
+    return g_LabelJson
+
+
+def get_pred():
+    global g_Predictor
+    return g_Predictor

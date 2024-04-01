@@ -25,7 +25,6 @@ class BaseConfig:
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))   # 项目根目录
     STATIC_FOLDER = os.path.join(BASE_DIR, 'static')        # 静态文件
     TEMPLATE_FOLDER = os.path.join(BASE_DIR, 'templates')   # 模板文件
-    UPLOADS_FOLDER = os.path.join(BASE_DIR, 'uploads')      # 上传文件
     CACHE_CFG = {
         'CACHE_TYPE': 'simple'
     }                                                       # 缓存配置

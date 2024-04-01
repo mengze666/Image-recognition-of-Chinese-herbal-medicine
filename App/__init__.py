@@ -1,12 +1,11 @@
 # -*- coding:utf-8 -*-
 # __init__.py  : 初始化文件，创建Flask应用
-from flask import Flask
-from .views import blue
-from .extends import init_extends
-from .error import error
-
 
 def create_app(config=None):
+    from flask import Flask
+    from .views import blue
+    from .extends import init_extends
+    from .error import error
     """flask的工厂函数"""
     if not config:
         raise Exception("请传入项目配置对象~")
