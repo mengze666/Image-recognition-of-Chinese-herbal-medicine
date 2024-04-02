@@ -41,7 +41,7 @@
 
 8. 模型部署
 
-#### 四、项目环境
+#### 四、项目环境配置
 
 1. 创建Python虚拟环境前
    
@@ -50,8 +50,7 @@
    安装成功之后，执行命令后成功输出conda版本，即代表Anaconda环境配置成功，可以通过conda创建虚拟环境了。
    
    ```bash
-   C:\Users\Lenovo>conda -V
-   conda 23.7.4
+   conda -V
    ```
 
 2. 配置conda国内镜像源
@@ -64,7 +63,7 @@
    
     无报错可以查看上述文件是否被成功生成，如成功生成，则编辑替换为如下内容
    
-   ```bash
+   ```ini
    channels:
    - defaults
    show_channel_urls: true
@@ -86,10 +85,10 @@
 3. 创建虚拟环境
    
    ```bash
-   # your_env_name修改为你自定义的虚拟环境名，使用全英文
-   conda create --name your_env_name python
+   # your_env_name修改为你自定义的虚拟环境名，使用全英文，这里是使用的是irchm
+   conda create --name irchm python
    # 附上移除操作，必须保证环境没被其他程序占用才可进行删除，否则删不干净
-   conda remove --name irchm --all
+   # conda remove --name irchm --all
    ```
 
 4. 在PyCharm上面添加该虚拟解释器
@@ -99,7 +98,7 @@
 5. 安装依赖包
    使用PyCharm打开项目根目录，使用Ctrl+F12打开终端，可以看到类似如下效果（前边有带着虚拟环境名称的括号，这就代表你可以管理你的虚拟环境了）：
    
-   ```bash
+   ```text
    (irchm) PS D:\projects\PyCharm\Image-recognition-of-Chinese-herbal-medicine>
    ```
    
@@ -107,7 +106,7 @@
    
    在使用pip安装我们的依赖包之前，我们首先配置一下pip国内镜像源，首先需要找到C盘用户目录，里面有一个pip.ini，如果没有可以新建一个，然后将下边的内容填写进去：
    
-   ```bash
+   ```ini
    [global]
    timeout=40
    index-url=http://mirrors.aliyun.com/pypi/simple/
@@ -146,10 +145,26 @@ CREATE DATABASE chinese_medicine DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8
 1. 修改配置文件，在系统初始化前，先查看cfg.py文件，这是一个项目配置基类文件，需要修改为你的数据库配置，若一致则略过此步
 
 2. 在终端执行以下命令，注意第四个命令不用执行
-- 初始化数据库 ```flask db init```
-- 进行数据迁移 `flask db migrate`
-- 更新数据版本 `flask db upgrade`
-- 回退数据版本 `flask db downgrade`
+
+```bash
+# 1. 初始化数据库 
+flask db init
+```
+
+```bash
+# 2. 进行数据迁移
+flask db migrate
+```
+
+```bash
+# 3. 更新数据版本
+flask db upgrade
+```
+
+```bash
+# 4. 回退数据版本
+flask db downgrade
+```
 
 > 特别声明：数据库表是由系统初始化自动生成的，具体可以看App.models模块中的数据表映射类，禁止手动操作MySQL的相应表结构，alembic_version表用于版本管理，禁止修改。对于t_medicine表中的数据，可通过csv文件导入，具体如何导入，自己网上搜，不再赘述。
 
