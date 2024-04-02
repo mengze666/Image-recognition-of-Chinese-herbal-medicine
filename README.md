@@ -135,10 +135,10 @@
 
 7. 创建数据库
    这里建议数据库名创建为chinese_medicine，字符集为utf8，默认排序规则为utf8_general_ci。
-
-```MySQL
-CREATE DATABASE chinese_medicine DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
-```
+   
+   ```MySQL
+   CREATE DATABASE chinese_medicine DEFAULT CHARACTER SET utf8 DEFAULT COLLATE        utf8_general_ci;
+   ```
 
 #### 五、系统初始化
 
