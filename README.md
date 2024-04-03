@@ -1,6 +1,6 @@
 # 中药材识别系统
 
-![image](https://github.com/mengze666/Image-recognition-of-Chinese-herbal-medicine/blob/master/static/images/baike.jpg)
+![image](./static/images/baike.jpg)
 
 #### 一、项目简介
 
