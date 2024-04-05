@@ -7,7 +7,7 @@ def create_app():
     from . import extends
     from . import main
     from . import error
-
+    print(BaseConfig.TEMPLATE_FOLDER)
     """flask的工厂函数"""
     # 初始化app
     app = Flask(

@@ -27,10 +27,10 @@ def upload():
             img_bytes = image_file.read()
             res = do_predict(img_bytes)
             return render_template(
-                './predict.html',
+                'predict.html',
                 result=res)
     elif request.method == 'GET':
-        return render_template('./predict.html')
+        return render_template('predict.html')
 
 
 def baike():
@@ -38,7 +38,7 @@ def baike():
     s = request.form.get('find', '')
     medicines, total, pagination = query_medicines(page, s)
     return render_template(
-        './baike.html',
+        'baike.html',
         list=medicines,
         pagination=pagination)
 
@@ -48,7 +48,7 @@ def baike_flavor(prop):
     s = request.form.get('find', '')
     special_medicines, total, pagination = query_special_medicines(page, prop, s)
     return render_template(
-        './baike.html',
+        'baike.html',
         list=special_medicines,
         pagination=pagination)
 
@@ -57,10 +57,5 @@ def baike_flavor(prop):
 def detail(name):
     medicine = query_medicine_by_chinese(name)
     return render_template(
-        './detail.html',
+        'detail.html',
         medicine=medicine)
-
-
-
-
-

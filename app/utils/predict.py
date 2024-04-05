@@ -1,10 +1,11 @@
 # -*- coding:utf-8 -*-
 # predict.py 预测模块
+from paddle.inference import Config, create_predictor
 from app.cfg import BaseConfig
 from .image import preprocess, result_process
 
 import os
-import paddle.inference as paddle_infer
+
 
 LABEL = os.path.join(BaseConfig.STATIC_FOLDER, 'json/label.json')
 PDMODEL = os.path.join(BaseConfig.STATIC_FOLDER, 'models/inference.pdmodel')
@@ -22,7 +23,7 @@ def init_predictor_config():
     初始化预测器配置对象
     Returns:预测器配置对象
     """
-    config = paddle_infer.Config()
+    config = Config()
     config.set_model(PDMODEL, PDIPARAMS)
     config.enable_memory_optim()
     config.disable_glog_info()
@@ -51,7 +52,7 @@ def init_predictor():
     Returns:预测器对象
     """
     config = get_predictor_config()
-    predictor = paddle_infer.create_predictor(config)
+    predictor = create_predictor(config)
     return predictor
 
 
@@ -108,4 +109,3 @@ def do_predict(image_file):
     result = run(predictor, [img])
     res = result_process(result)
     return res
-
