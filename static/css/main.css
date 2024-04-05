@@ -230,7 +230,6 @@
     .bd-screenshots {
         grid-template-columns: repeat(auto-fill, minmax(calc(16.5% - 1.5rem), 1fr))!important;
         margin: 0 auto;
-        max-width: 1024px;
     }
 }
 /* 屏幕不小于1216px*/
@@ -238,7 +237,7 @@
     .bd-screenshots {
         grid-template-columns: repeat(auto-fill, minmax(calc(12.5% - 1.5rem), 1fr))!important;
         margin: 0 auto;
-        max-width: 1024px;
+        /*max-width: 1024px;*/
     }
 }
 /* end-实现百科盒子的响应式布局*/

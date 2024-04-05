@@ -41,7 +41,7 @@ class Medicine(db.Model):
                          comment='药用部位')
     # 中药材类别（按功效划分）
     efficacy_class = db.Column(db.String(30),
-                               comment='中药材类别（按功效划分）')
+                               comment='功效')
     # 性
     property = db.Column(db.String(30),
                          comment='性')

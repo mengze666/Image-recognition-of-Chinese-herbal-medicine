@@ -15,6 +15,7 @@ import threading
 lock = threading.Lock()
 
 
+@cache.cached(timeout=60)
 def index():
     return render_template('index.html')
 
