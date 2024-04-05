@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 # models.py ：模型，数据库
 
-from .extends import db, cache
+from .extends import db
 
 
 class Medicine(db.Model):

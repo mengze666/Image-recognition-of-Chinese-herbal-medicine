@@ -1,7 +1,5 @@
 /* 全局控制 */
 
-
-
 /* 全局颜色控制 */
 :root {
     --primary: #00d1b2;
@@ -57,7 +55,6 @@
     --color-light: var(--primary-light);
     --color-dark: var(--primary-dark);
 }
-
 .bd-navbar-item.bd-navbar-item-images {
     --color-light: var(--images-light);
     --color-dark: var(--images-dark);
@@ -86,7 +83,6 @@
     border-radius: .375em;
     color: var(--color-dark)!important;
 }
-
 .bd-navbar-item:hover:not(.is-active) {
     background-color: var(--color-light)!important;
 }
@@ -97,12 +93,11 @@
     --background-color: transparent!important;
     box-shadow: inset 0 0 0 2px var(--color-light)!important;
 }
+
 .bd-navbar-item {
     transition-duration: 86ms;
     transition-property: var(--background-color), box-shadow, color;
 }
-
-
 /* 控制icon与菜单名之间的距离 */
 .bd-navbar-item>.icon {
     margin-left: -.25em;
@@ -123,78 +118,18 @@
     display: none!important;
 }
 
-/* 屏幕宽度不小于1024px*/
-@media screen and (min-width: 1024px) {
-    .bd-mobile-icon {
-        display: none!important;
-    }
-    .bd-navbar {
-        padding: 1rem 2rem;
-    }
-    .bd-hero-heading .title .icon {
-        margin-left: calc(-1 * (var(--icon-dimensions) + var(--icon-spacing)));
-        margin-right: var(--icon-spacing);
-    }
-    .bd-hero {
-        --icon-spacing: 0.5em;
-    }
+.bd-hero-heading .title .icon {
+    margin-right: var(--icon-spacing);
 }
-/* 屏幕宽度不大于1023px*/
-@media screen and (max-width: 1023px) {
-    .navbar-end {
-        display: none;
-    }
-    .bd-navbar-ellipsis {
-        display: none!important;
-    }
-    .navbar-dropdown .navbar-item {
-        padding: .5em .75em !important;
-    }
-    .bd-mobile-icon {
-        display: flex;
-        align-items: center;
-    }
-    .navbar-start, .navbar-end {
-      flex-direction: column;
-    }
-
-    .navbar-item {
-      margin-right: 0;
-      margin-bottom: 0.5rem;
-    }
-
-    .bd-screenshots {
-        grid-template-columns: repeat(auto-fill, minmax(calc(33.3% - 1.5rem), 1fr))!important;
-        margin: 0 auto;
-        max-width: 1023px;
-    }
-
-     .bd-hero-heading .title .icon {
-        margin-right: var(--icon-spacing);
-    }
-    .bd-hero {
-        --icon-spacing: 0.5em;
-    }
-
+.bd-hero {
+    --icon-spacing: 0.5em;
 }
 
-
-
-
-@media screen and (min-width: 1024px), print {
-    .bd-screenshots {
-        grid-template-columns: repeat(auto-fill, minmax(calc(12.5% - 1.5rem), 1fr))!important;
-        margin: 0 auto;
-        max-width: 1024px;
-    }
-}
 
 .bd-screenshots {
     display: grid;
     grid-gap: 1.5rem;
-    grid-template-columns: 1fr;
 }
-
 
 .bd-screenshot {
     align-self: flex-start;
@@ -215,46 +150,11 @@
     position: relative;
 }
 
-
-.wrap {
-  display: inline-flex;
-  position: relative;
-  margin: 50px auto;
+/* begin-分页样式 */
+.pagination {
+    margin: .5em;
+    padding: 1em 1em 1em 0;
 }
-
-[type=range] {
-  margin: 0;
-  -webkit-appearance: none;
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  background: none;
-  overflow: hidden;
-}
-
-::-webkit-slider-runnable-track {
-  background-color: transparent;
-  height: 100%;
-  cursor: ew-resize;
-}
-
-::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  width: 4px;
-  height: 100%;
-  background-color: #18a0fb;
-}
-
-.wrap img {
-  display: block;
-  width: 300px;
-}
-
-.wrap img:first-of-type {
-  position: absolute;
-  clip-path: inset(0 calc(100% - var(--pos, .5) * 100%) 0 0)
-}
-
 .pagination-page-info {
     padding: .6em .6em .6em 0;
     width: 40em;
@@ -267,8 +167,78 @@
     padding: .1em .25em;
     font-size: 150%;
 }
+/* end-分页样式 */
 
-.pagination {
-    margin: .5em;
-    padding: 1em 1em 1em 0;
+/*------------------媒体查询------------------*/
+/* 屏幕不大于1023px*/
+@media screen and (max-width: 1023px){
+    .navbar-end {
+        display: none;
+    }
+    .bd-navbar-ellipsis {
+        display: none!important;
+    }
+    .navbar-dropdown .navbar-item {
+        padding: .5em .75em !important;
+    }
+    .bd-mobile-icon {
+        display: flex;
+        align-items: center;
+    }
+    .navbar-start, .navbar-end {
+      flex-direction: column;
+    }
+    .navbar-item {
+      margin-right: 0;
+      margin-bottom: 0.5rem;
+    }
 }
+/* 屏幕宽度不小于1024px*/
+@media screen and (min-width: 1024px) {
+    .bd-mobile-icon {
+        display: none!important;
+    }
+    .bd-navbar {
+        padding: 1rem 2rem;
+    }
+
+    .hero-body {
+        padding: 3rem 6rem;
+    }
+
+}
+
+/* begin-实现百科盒子的响应式布局 */
+/* 屏幕不大于768px*/
+@media screen and (max-width: 768px){
+    .bd-screenshots {
+        grid-template-columns: repeat(auto-fill, minmax(calc(33.3% - 1.5rem), 1fr))!important;
+        margin: 0 auto;
+        max-width: 768px;
+    }
+}
+/* 屏幕宽度介于769px到1023px之间*/
+@media screen and (min-width: 769px) and (max-width: 1023px){
+    .bd-screenshots {
+        grid-template-columns: repeat(auto-fill, minmax(calc(20% - 1.5rem), 1fr))!important;
+        margin: 0 auto;
+        max-width: 1023px;
+    }
+}
+/* 屏幕介于1024px到1215px之间*/
+@media screen and (min-width: 1024px) and (max-width: 1215px){
+    .bd-screenshots {
+        grid-template-columns: repeat(auto-fill, minmax(calc(16.5% - 1.5rem), 1fr))!important;
+        margin: 0 auto;
+        max-width: 1024px;
+    }
+}
+/* 屏幕不小于1216px*/
+@media screen and (min-width: 1216px){
+    .bd-screenshots {
+        grid-template-columns: repeat(auto-fill, minmax(calc(12.5% - 1.5rem), 1fr))!important;
+        margin: 0 auto;
+        max-width: 1024px;
+    }
+}
+/* end-实现百科盒子的响应式布局*/

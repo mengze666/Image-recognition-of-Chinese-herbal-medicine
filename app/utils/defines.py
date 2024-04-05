@@ -1,10 +1,27 @@
-{
+# -*- coding:utf-8 -*-
+
+# page defines
+# 分页
+PAGE_SIZE = 24  # 每页显示的记录条数
+DISPLAY_MSG = '''from <span class="tag is-success is-light">{start}</span> to 
+<span class="tag is-success is-light">{end}</span>, in total <span class="tag is-info is-light">{total}
+</span> {record_name}'''
+SEARCH_MSG = 'found <span class="tag is-info is-light">{total}</span> {record_name}'
+MEDICINE_RECORD_NAME = 'medicine(s)'
+CSS_FRAMEWORK = 'bulma'
+BULMA_STYLE = 'rounded'
+
+
+# image defines
+# 图片数据预处理
+# 标签json
+LABEL_DICT = {
     "0": {
         "pinyin": "aiye",
         "name": "艾叶"
     },
     "1": {
-        "pinyin": "ejiao",
+        "pinyin": "ajiao",
         "name": "阿胶"
     },
     "2": {
@@ -652,3 +669,4 @@
         "name": "紫菀"
     }
 }
+

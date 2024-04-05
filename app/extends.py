@@ -10,8 +10,8 @@ cache = Cache()
 
 
 # 和app绑定
-def init_extends(app):
-    from cfg import BaseConfig
+def init_app(app):
+    from app.cfg import BaseConfig
     db.init_app(app)
     migrate.init_app(app=app, db=db)
     cache.init_app(app=app, config=BaseConfig.CACHE_CFG)

@@ -34,3 +34,4 @@ SQLAlchemy==2.0.29
 typing_extensions==4.10.0
 Werkzeug==3.0.1
 wheel==0.41.2
+requests~=2.31.0

@@ -122,7 +122,7 @@
            pypi.mirrors.ustc.edu.cn
    ```
    
-   然后关掉刚刚的终端再次打开它，避免刚刚的修改没有奏效，然后在终端输入如下命令
+   然后关掉刚刚的终端再次打开它，避免刚刚修改的配置没有奏效，然后在终端输入如下命令
    
    ```bash
    pip install -r requirements.txt
@@ -167,5 +167,3 @@ flask db downgrade
 ```
 
 > 特别声明：数据库表是由系统初始化自动生成的，具体可以看App.models模块中的数据表映射类，禁止手动操作MySQL的相应表结构，alembic_version表用于版本管理，禁止修改。对于t_medicine表中的数据，可通过csv文件导入，具体如何导入，自己网上搜，不再赘述。
-
-# 
