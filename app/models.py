@@ -1,5 +1,5 @@
 # -*- coding:utf-8 -*-
-# models.py ：模型，数据库
+# app/models.py ：模型，数据库
 
 from .extends import db
 

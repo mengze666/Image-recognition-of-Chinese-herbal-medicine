@@ -1,5 +1,5 @@
 # -*- coding:utf-8 -*-
-# utils.py ：工具箱
+# app/utils/image.py ：工具箱
 from . import defines
 
 import cv2

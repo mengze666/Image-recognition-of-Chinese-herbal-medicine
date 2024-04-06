@@ -1,5 +1,5 @@
 # -*- coding:utf-8 -*-
-# app/main/defines.py
+# app/services/defines.py
 
 # 模糊条件查询
 PROPERTY_COOL = '凉'
@@ -12,4 +12,3 @@ PROPERTY_TUPLE = (
     PROPERTY_COLD,
     PROPERTY_EVEN,
 )
-

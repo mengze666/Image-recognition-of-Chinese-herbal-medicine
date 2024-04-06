@@ -1,5 +1,5 @@
 # -*- coding:utf-8 -*-
-# config.py 项目配置文件
+# app/cfg.py 项目配置文件
 import os
 
 

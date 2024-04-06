@@ -1,4 +1,5 @@
 # -*- coding:utf-8 -*-
+# app/utils/defines.py
 
 # page defines
 # 分页
@@ -669,4 +670,3 @@ LABEL_DICT = {
         "name": "紫菀"
     }
 }
-

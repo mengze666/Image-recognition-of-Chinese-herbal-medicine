@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
-# predict.py 预测模块
+# app/utils/predict.py 预测模块
 from paddle.inference import Config, create_predictor
-from app.cfg import BaseConfig
+from config.cfg import BaseConfig
 from .image import preprocess, result_process
 
 import os

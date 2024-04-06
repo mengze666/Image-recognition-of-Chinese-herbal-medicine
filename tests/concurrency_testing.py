@@ -1,3 +1,5 @@
+# -*- coding:utf-8 -*-
+# tests/concurrency_testing.py : 百人并发测试
 import datetime
 import requests
 import threading
