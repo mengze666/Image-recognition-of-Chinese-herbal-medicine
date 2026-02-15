@@ -21,6 +21,8 @@
 
 - **系统前端：HTML5 + Bulma.css + Javascript**
 
+- **数据集：https://aistudio.baidu.com/datasetdetail/246739**
+
 #### 三、实现流程
 
 本项目可以分为以下几个步骤:
